@@ -1,18 +1,7 @@
-import subprocess as sub
-try:
-    from ctypes import *
-    import pythoncom
-    import pyhook
-    import win32clipboard
-except Exception, e:
-    for i in ['pythoncom', 'pyhook', 'win32clipboard']:
-        if i in e:
-            try:
-                p = sub.Popen(['pip install pythoncom'], stdout=sub.PIPE,stdrr=sub.PIPE)
-                o,error = p.communicate()
-                print o
-            except:
-                print error, e
+from ctypes import *
+import pythoncom
+import pyHook
+import win32clipboard
 
 user32          = windll.user32
 kernel32        = windll.kernel32
