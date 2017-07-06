@@ -20,6 +20,8 @@ class Server (paramiko.ServerInterface):
 server = sys.argv[1]
 ssh_port = int(sys.argv[2])
 
+print server, ssh_port
+
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

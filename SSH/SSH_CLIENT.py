@@ -7,7 +7,7 @@ def ssh_command(ip, user, passwd, command):
         try:
             client = paramiko.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            client.connect(ip, username=user, password=passwd)
+            client.connect(ip, 22, username=user, password=passwd)
             ssh_session = client.get_transport().open_session()
             if ssh_session.active:
                 ssh_session.send(command)
