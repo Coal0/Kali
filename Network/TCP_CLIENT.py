@@ -1,15 +1,19 @@
+import sys
 import socket
-target_host = "0.0.0.0"
-target_port = 9999
 
-# Create
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# Connect
-client.connect((target_host,target_port))
-# Send
-sendstring = raw_input("What do we want to send>>> ")
-client.send(sendstring)
-# Recieve
-response = client.recv(4096)
+TARGET_HOST = "0.0.0.0"
+TARGET_PORT = 9999
 
-print response 
+if __name__ == "__main__":
+    client = socket.socket()
+    client.connect((TARGET_HOST, TARGET_PORT))
+    if sys.version_info.major < 3:
+        request = raw_input("What do we want to send >>> ")
+    else:    
+        request = input("What do we want to send >>> ").encode()
+    client.send(request)
+    while True:
+        response = client.recv(4096)
+        if not response:
+            break
+        print(response)
