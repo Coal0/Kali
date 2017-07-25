@@ -28,7 +28,7 @@ def save_screenshot():
     i = 0
     while os.path.exists("screenshot%s.bmp" % i):
         i += 1
-    filename = 'C:\\Users\\Educontract\\Desktop\\Kali_Networking_Python2.7\\Trojan\\screenshot%s.bmp' % str(i)
+    filename = os.join(os.getcwd() ,screenshot%s.bmp' % str(i))
     screenshot.SaveBitmapFile(mem_dc, filename)
 
     # Free Mem
